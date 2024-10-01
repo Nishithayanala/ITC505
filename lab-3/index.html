@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <title>Serving fonts</title>
+</head>
+<style>
+body {
+    font-family: 'Ink free', sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: rgb(42, 84, 140);
+}
+
+h1 {
+    font-family: 'Ink free',sans-serif; 
+    font-size: 2.5em; 
+    color: #ed7b7b;
+}
+
+p {
+    font-family: 'Silkscreen',sans-serif; 
+    font-weight: 400; 
+    font-size: 1.2em; 
+}
+.p1 {
+    font-family: 'Impact',sans-serif; 
+    font-weight: normal; 
+}
+</style>
+
+<body>
+    <h1>Serving Fonts</h1>
+    <p>In the html file I have used  link rel that links to <span class="p1"> External resources</span> and  in the body the contents include are h1,p,span. The fonts used in css file is Ink free,Silkscreen,impact.Span tag is used to apply a unique style to the word that is css file with impact font.In the html document i have used google fonts to style the content in the p,header,span tag</p>
+</body>
+<footer>
+    <p>Last updated: 
+        <span id="lastModified"></span>
+    </p>
+</footer>
+<script type="text/javascript">
+     var x = document.lastModified;
+     document.getElementById('lastModified').textContent = x;
+</script>
+</html>
+
