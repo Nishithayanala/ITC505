@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Adventure Game</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #282c34;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    padding: 1rem;
+    background-color: #61dafb;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #282c34;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+#story-container {
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#story {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+#image-container {
+    margin-top: 1rem;
+}
+
+#addendum {
+    margin-top: 2rem;
+    max-width: 600px;
+    padding: 1.5rem;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+#addendum h2 {
+    margin-bottom: 1rem;
+    color: #61dafb;
+}
+#addendum {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8d4343; /* Light background to distinguish section */
+    border-radius: 8px;
+}
+
+#addendum h2 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#addendum p {
+    margin-bottom: 15px; /* Adds space after each paragraph */
+    line-height: 1.6;    /* Improves readability */
+}
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Choose Your Adventure: PUBG Island</h1>
+    </header>
+
+    <main>
+        <div id="story-container">
+            <div id="story">Your story will appear here.</div>
+            <div id="choices"></div>
+        </div>
+        <div id="image-container"></div>
+    </main>
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #282c34;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    padding: 1rem;
+    background-color: #61dafb;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #282c34;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+#story-container {
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#story {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+#image-container {
+    margin-top: 1rem;
+}
+
+#addendum {
+    margin-top: 2rem;
+    max-width: 600px;
+    padding: 1.5rem;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+#addendum h2 {
+    margin-bottom: 1rem;
+    color: #61dafb;
+}
+#addendum {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8d4343; /* Light background to distinguish section */
+    border-radius: 8px;
+}
+
+#addendum h2 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#addendum p {
+    margin-bottom: 15px; /* Adds space after each paragraph */
+    line-height: 1.6;    /* Improves readability */
+}
+
+
+    <section id="addendum">
+        <h2 align=" center">Addendum</h2>
+        <p><strong>Process:</strong> I began by planning the flow of the story, mapping out various choices and their consequences to ensure the narrative was engaging and interactive. The story was structured into different stages, each with a specific set of choices leading to unique paths.</p>
+        
+
+        <p><strong>Creative Choices:</strong> I chose a survival theme, where each decision impacts the character's fate, creating tension and making the player feel invested in each choice. Each path was designed to lead to an eventual "Game Over" or "You Win" outcome, making every choice meaningful.</p>
+
+
+        <p><strong>Challenges and Solutions:</strong> A significant challenge was handling the game's flow based on user choices. I addressed this by using a structured object for each story stage, enabling easier management of choices and consequences. Another challenge was updating the display dynamically without refreshing the page, which was solved by carefully using JavaScript DOM manipulation.</p>
+
+        
+        <p><strong>Insights Gained:</strong> This project helped me improve my understanding of JavaScript functions and event handling, especially with DOM manipulation and creating a more engaging user interface.</p>
+    </section>
+
+
+    <script>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #282c34;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    padding: 1rem;
+    background-color: #61dafb;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #282c34;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+#story-container {
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#story {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+#image-container {
+    margin-top: 1rem;
+}
+
+#addendum {
+    margin-top: 2rem;
+    max-width: 600px;
+    padding: 1.5rem;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+#addendum h2 {
+    margin-bottom: 1rem;
+    color: #61dafb;
+}
+#addendum {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8d4343; /* Light background to distinguish section */
+    border-radius: 8px;
+}
+
+#addendum h2 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#addendum p {
+    margin-bottom: 15px; /* Adds space after each paragraph */
+    line-height: 1.6;    /* Improves readability */
+}
+</script>
+</body>
+</html>
