@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your Adventure Game</title>
-* {
+    <style>
+    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -111,6 +112,7 @@ button:hover {
     margin-bottom: 15px; /* Adds space after each paragraph */
     line-height: 1.6;    /* Improves readability */
 }
+</style>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -127,114 +129,9 @@ button:hover {
         <div id="image-container"></div>
     </main>
 
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #282c34;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-header {
-    width: 100%;
-    padding: 1rem;
-    background-color: #61dafb;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2rem;
-    color: #282c34;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 600px;
-    width: 100%;
-}
-
-#story-container {
-    background-color: #333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-#story {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-#choices {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #61dafb;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #21a1f1;
-}
-
-#image-container {
-    margin-top: 1rem;
-}
-
-#addendum {
-    margin-top: 2rem;
-    max-width: 600px;
-    padding: 1.5rem;
-    background-color: #444;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: left;
-}
-
-#addendum h2 {
-    margin-bottom: 1rem;
-    color: #61dafb;
-}
-#addendum {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #8d4343; /* Light background to distinguish section */
-    border-radius: 8px;
-}
-
-#addendum h2 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-#addendum p {
-    margin-bottom: 15px; /* Adds space after each paragraph */
-    line-height: 1.6;    /* Improves readability */
-}
-
+    <footer>
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
 
     <section id="addendum">
         <h2 align=" center">Addendum</h2>
@@ -251,113 +148,92 @@ button:hover {
     </section>
 
 
-    <script>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    <script>// Define the story objects with choices and consequences
+const story = {
+    start: {
+        text: "You're flying over the island in a plane. Do you want to jump or wait for the perfect moment?",
+        choices: [
+            { text: "Jump", consequence: "forest" },
+            { text: "Wait", consequence: "planeShot" }
+        ]
+    },
+    forest: {
+        text: "You land in a forest. Do you go to the town or hide in the trees?",
+        choices: [
+            { text: "Go to the town", consequence: "town" },
+            { text: "Hide in the trees", consequence: "ambush" }
+        ]
+    },
+    town: {
+        text: "You reach the town. A sniper targets you from the roof! Do you fight or run?",
+        choices: [
+            { text: "Fight", consequence: "defeat" },
+            { text: "Run", consequence: "survive" }
+        ]
+    },
+    planeShot: {
+        text: "The plane is shot down! You parachute into a dangerous area. Do you search for a weapon or try to hide?",
+        choices: [
+            { text: "Search for a weapon", consequence: "weapon" },
+            { text: "Hide", consequence: "ambush" }
+        ]
+    },
+    ambush: {
+        text: "You're ambushed by enemies and don't make it. Game Over!",
+        choices: []
+    },
+    defeat: {
+        text: "You fought valiantly, but the sniper got you. Game Over!",
+        choices: []
+    },
+    survive: {
+        text: "You ran away successfully and survived! You win!",
+        choices: []
+    },
+    weapon: {
+        text: "You find a weapon, but now you're being hunted. Do you fight back or run?",
+        choices: [
+            { text: "Fight back", consequence: "defeat" },
+            { text: "Run", consequence: "survive" }
+        ]
+    }
+};
+
+// Function to start the game
+function startGame() {
+    updatePage('start');
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #282c34;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+// Function to update the page content based on the current story part
+function updatePage(stage) {
+    const currentStage = story[stage];
+    const storyText = document.getElementById("story");
+    const choicesDiv = document.getElementById("choices");
+
+    // Update story text
+    storyText.textContent = currentStage.text;
+
+    // Clear existing choices
+    choicesDiv.innerHTML = '';
+    
+    // Add buttons for choices (if there are any)
+    if (currentStage.choices && currentStage.choices.length > 0) {
+        currentStage.choices.forEach(choice => {
+            const button = document.createElement("button");
+            button.textContent = choice.text;
+            button.onclick = () => updatePage(choice.consequence);
+            choicesDiv.appendChild(button);
+        });
+    } else {
+        // No choices left, the game has ended
+    }
 }
 
-header {
-    width: 100%;
-    padding: 1rem;
-    background-color: #61dafb;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2rem;
-    color: #282c34;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 600px;
-    width: 100%;
-}
-
-#story-container {
-    background-color: #333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-#story {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-#choices {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #61dafb;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #21a1f1;
-}
-
-#image-container {
-    margin-top: 1rem;
-}
-
-#addendum {
-    margin-top: 2rem;
-    max-width: 600px;
-    padding: 1.5rem;
-    background-color: #444;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: left;
-}
-
-#addendum h2 {
-    margin-bottom: 1rem;
-    color: #61dafb;
-}
-#addendum {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #8d4343; /* Light background to distinguish section */
-    border-radius: 8px;
-}
-
-#addendum h2 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-#addendum p {
-    margin-bottom: 15px; /* Adds space after each paragraph */
-    line-height: 1.6;    /* Improves readability */
-}
+// Event listener to load the page
+document.addEventListener('DOMContentLoaded', () => {
+    startGame();
+    document.getElementById('lastModified').textContent = document.lastModified;
+});
 </script>
 </body>
 </html>
