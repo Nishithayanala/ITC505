@@ -4,66 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holy Grail Layout - Guess the Number Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>Guess the Number Game</h1>
-        </header>
-        
-        <!-- Left Sidebar (Sidenav) -->
-        <nav class="sidenav">
-            <ul>
-                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">Home</a></li> <!-- Updated link -->
-                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">About</a></li> <!-- Updated link -->
-                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">Contact</a></li> <!-- Updated link -->
-
-            </ul>
-        </nav>
-        
-        <!-- Main Content Area with Dashboards -->
-        <main class="content">
-            <!-- Home Dashboard -->
-            <div class="dashboard" id="home-dashboard" style="display: block;">
-                <h2>Try to Guess the Number!</h2>
-                <p>Guess a number between 1 and 100:</p>
-                <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
-                <button onclick="guessNumber()">Guess</button>
-                <p id="guessFeedback"></p>
-            </div>
-
-            <!-- About Dashboard -->
-            <div class="dashboard" id="about-dashboard">
-                <h2>About the Game</h2>
-                <p>The "Guess the Number" game is a simple and interactive guessing game where the player attempts to guess a randomly chosen number between 1 and 100. Each time you make a guess, you will get feedback indicating whether your guess was correct or incorrect. A new number is randomly generated for each guess to keep the game dynamic.</p>
-            </div>
-
-            <!-- Contact Dashboard -->
-            <div class="dashboard" id="contact-dashboard">
-                <h2>Contact</h2>
-                <p>For any questions or feedback about the game, please reach out at <a href="mailto:contact@example.com">contact@example.com</a>.</p>
-            </div>
-        </main>
-        <aside class="ads">
-            <a href="https://www.amazon.com/Dr-Barbara-Sturm-Anti-Aging-Starter/dp/B0CYGZSSPZ/ref=sr_1_4?ie=UTF8&ASIN=B0CYGZSSPZ&sr=1-4&qid=1731373661&_encoding=UTF8&content-id=amzn1.sym.17b136c8-2a3e-434e-b286-e408df7213e5&pd_rd_w=AIdrR&dib=eyJ2IjoiMSJ9.4aoo3rYYcSV4yGEq1w7lCbMqbDoyWjv-3Trg-Bet2bVjxIn9oIVOsSBTrZErrjzH6USuHCj31GwahVJwixVXgwqSsuyhyxIZIY9Hq1ro2Xf0pAiwFeEGy8sUyG3wNFrHGWxFCmQjaXNEJbuzzsZ4Ta7CO5N1hJNMrYKMsZI0YKDE1NNJYUtVGoJ3KzdR7U3mn4teaUt5Op38gf2qTm-hnuPcR_nAt2pFI3smYBIcZ-slgdKPM_423W8nYwYhSjmJw5vTCvZOQVygcLsaYcAtpZp3MZ76BVESFLHDKtu4ADI.KvgubrLdoJoMjz2irlL-C2eD43Gz-iTj4lQqrV7Z4oY&rnid=20657941011&dib_tag=se&pd_rd_wg=RuuMc&pd_rd_r=1f3436f5-9870-4551-8510-d25ac78d56f3&ref_=lx_bd" target="_blank">
-                <img src="ads.jpg" alt="Amazon Product" class="ad-image">
-            </a>
-            <p>Check out this popular product on Amazon!</p>
-        </aside>
-        
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>Addendum: This is a simple "Guess the Number" game where the user tries to guess a randomly picked number between 1 and 100. The number changes with each guess to keep the game dynamic.</p>
-            <p id="lastModified"></p>
-        </footer>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
-</html>
-/* Base Styles */
+    <style>
+        /* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -202,7 +144,68 @@ body, html {
 .ad-image:hover {
     transform: scale(1.05);
 }
-// Initialize a random number for the guessing game
+
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+    
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Guess the Number Game</h1>
+        </header>
+        
+        <!-- Left Sidebar (Sidenav) -->
+        <nav class="sidenav">
+            <ul>
+                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">Home</a></li> <!-- Updated link -->
+                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">About</a></li> <!-- Updated link -->
+                <li><a href="https://www.pubg.com/en/main" target="_blank" id="about-link">Contact</a></li> <!-- Updated link -->
+
+            </ul>
+        </nav>
+        
+        <!-- Main Content Area with Dashboards -->
+        <main class="content">
+            <!-- Home Dashboard -->
+            <div class="dashboard" id="home-dashboard" style="display: block;">
+                <h2>Try to Guess the Number!</h2>
+                <p>Guess a number between 1 and 100:</p>
+                <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
+                <button onclick="guessNumber()">Guess</button>
+                <p id="guessFeedback"></p>
+            </div>
+
+            <!-- About Dashboard -->
+            <div class="dashboard" id="about-dashboard">
+                <h2>About the Game</h2>
+                <p>The "Guess the Number" game is a simple and interactive guessing game where the player attempts to guess a randomly chosen number between 1 and 100. Each time you make a guess, you will get feedback indicating whether your guess was correct or incorrect. A new number is randomly generated for each guess to keep the game dynamic.</p>
+            </div>
+
+            <!-- Contact Dashboard -->
+            <div class="dashboard" id="contact-dashboard">
+                <h2>Contact</h2>
+                <p>For any questions or feedback about the game, please reach out at <a href="mailto:contact@example.com">contact@example.com</a>.</p>
+            </div>
+        </main>
+        <aside class="ads">
+            <a href="https://www.amazon.com/Dr-Barbara-Sturm-Anti-Aging-Starter/dp/B0CYGZSSPZ/ref=sr_1_4?ie=UTF8&ASIN=B0CYGZSSPZ&sr=1-4&qid=1731373661&_encoding=UTF8&content-id=amzn1.sym.17b136c8-2a3e-434e-b286-e408df7213e5&pd_rd_w=AIdrR&dib=eyJ2IjoiMSJ9.4aoo3rYYcSV4yGEq1w7lCbMqbDoyWjv-3Trg-Bet2bVjxIn9oIVOsSBTrZErrjzH6USuHCj31GwahVJwixVXgwqSsuyhyxIZIY9Hq1ro2Xf0pAiwFeEGy8sUyG3wNFrHGWxFCmQjaXNEJbuzzsZ4Ta7CO5N1hJNMrYKMsZI0YKDE1NNJYUtVGoJ3KzdR7U3mn4teaUt5Op38gf2qTm-hnuPcR_nAt2pFI3smYBIcZ-slgdKPM_423W8nYwYhSjmJw5vTCvZOQVygcLsaYcAtpZp3MZ76BVESFLHDKtu4ADI.KvgubrLdoJoMjz2irlL-C2eD43Gz-iTj4lQqrV7Z4oY&rnid=20657941011&dib_tag=se&pd_rd_wg=RuuMc&pd_rd_r=1f3436f5-9870-4551-8510-d25ac78d56f3&ref_=lx_bd" target="_blank">
+                <img src="ads.jpg" alt="Amazon Product" class="ad-image">
+            </a>
+            <p>Check out this popular product on Amazon!</p>
+        </aside>
+        
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>Addendum: This is a simple "Guess the Number" game where the user tries to guess a randomly picked number between 1 and 100. The number changes with each guess to keep the game dynamic.</p>
+            <p id="lastModified"></p>
+        </footer>
+    </div>
+    
+    <script src="script.js">
+        // Initialize a random number for the guessing game
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 function guessNumber() {
@@ -247,3 +250,7 @@ function navigateTo(section) {
 
 // Load Home dashboard by default
 navigateTo('home');
+
+    </script>
+</body>
+</html>
