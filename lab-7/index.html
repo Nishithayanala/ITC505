@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Libs Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background-image: url('abcd2.jpg'); /* Replace 'your-image-url.jpg' with the path to your background image */
+            background-size: cover;
+        }
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    background-color: rgb(135, 211, 213); 
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(2, 46, 41); 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+h1 {
+    color: #011011; /* Change the title color to green */
+}
+
+    </style>
+</head>
+<body>
+    <h1>MAD LIBS FORMS</h1>
+    <form id="madLibForm">
+        <label for="noun">NOUN (singular):</label>
+        <input type="text" id="noun" name="noun" required>
+
+        <label for="adjective">ADJECTIVE:</label>
+        <input type="text" id="adjective" name="adjective" required>
+
+        <label for="verb">VERB:</label>
+        <input type="text" id="verb" name="verb" required>
+
+        <label for="pluralNoun">PLURAL NOUN:</label>
+        <input type="text" id="pluralNoun" name="pluralNoun" required>
+
+        <label for="adverb">ADVERB:</label>
+        <input type="text" id="adverb" name="adverb" required>
+
+        <button type="button" onclick="generateMadLib()">Generate Mad Lib</button>
+    </form>
+
+    <div id="madLibResult"></div>
+
+    <script>
+// Array of Mad Lib sentences
+const madLibSentences = [
+    "Once upon a Time, there existed a ${adjective} ${noun} who was very intresred in ${verb} under the moonlight. One day, this individual discovered a chest filled with ${pluralNoun} and chose to ${adverb} share this newfound treasure with the world.",
+    "In a distant realm, a ${adjective} princess patiently waited in her tower for a courageous knight to ${verb} and rescue her from the clutches of the ${noun}. Unbeknownst to her, the knight harbored a fear of ${pluralNoun}!",
+    "Employing a wave of his wand, the ${adjective} wizard cast a spell, transforming a ${noun} into a ${pluralNoun}. Witnessing this magical ${adverb} metamorphosis, the entire kingdom stood in awe.",
+    "On a sunlit day, a collective of ${pluralNoun} resolved to ${verb} their way to the summit of the ${adjective} mountain. The breathtaking view elicited laughter ${adverb} as they relished in their adventure.",
+    "The ${adjective} cat perched on the windowsill, observing the world outside. Suddenly, it caught sight of a ${noun} and playfully ${verb} through the open window, resulting in a humorous commotion.",
+    "In an advanced future, ${pluralNoun} had developed ${adjective} abilities. They could move at remarkable speeds and communicate using ${adverb} sophisticated technology."
+];
+
+
+function generateMadLib() {
+    
+    const noun = document.getElementById('noun').value;
+    const adjective = document.getElementById('adjective').value;
+    const verb = document.getElementById('verb').value;
+    const pluralNoun = document.getElementById('pluralNoun').value;
+    const adverb = document.getElementById('adverb').value;
+
+    
+    if (noun && adjective && verb && pluralNoun && adverb) {
+        
+        const randomIndex = Math.floor(Math.random() * madLibSentences.length);
+        const madLibSentence = madLibSentences[randomIndex];
+
+        const madLib = madLibSentence
+            .replace("${noun}", noun)
+            .replace("${adjective}", adjective)
+            .replace("${verb}", verb)
+            .replace("${pluralNoun}", pluralNoun)
+            .replace("${adverb}", adverb);
+
+        
+        document.getElementById('madLibResult').innerHTML = `<h2>Your Mad Lib:</h2><p>${madLib}</p>`;
+
+        
+        document.getElementById('madLibForm').reset();
+    } else {
+        alert("Please complete all fields before generating the Mad Lib.");
+    }
+}
+
+</script>
+    <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+         var x = document.lastModified;
+         document.getElementById('lastModified').textContent = x;
+    </script>
+</body>
+</html>
