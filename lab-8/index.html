@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Web Form</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ef7878;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgb(231, 157, 157);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Limits the width of the form */
+    box-sizing: border-box;
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+
+.container.active {
+    display: block; /* Show active container */
+}
+
+h1 {
+    font-size: 28px; /* Slightly larger heading */
+    color: #333;
+    margin-bottom: 20px; /* Adds space below the heading */
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px; /* Adds space below the paragraph */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #080404;
+    text-align: left;
+}
+
+input {
+    padding: 12px; /* Increased padding for better input appearance */
+    margin-bottom: 15px; /* Increased margin between inputs */
+    font-size: 16px;
+    border: 1px solid #c9d6b7;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px; /* Limits the width of the input fields */
+    margin-left: auto;
+    margin-right: auto; /* Centers the inputs */
+}
+
+button {
+    padding: 12px;
+    background-color: #22199d;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 400px; /* Limits the width of the button */
+    margin-left: auto;
+    margin-right: auto; /* Centers the button */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:focus {
+    outline: none;
+}
+
+  </style>
+</head>
+<body>
+    <!-- Form Container -->
+    <div id="formContainer" class="container active">
+        <h1>Secure Web Form</h1>
+        <form id="secureForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Thank You Container -->
+    <div id="thankYouContainer" class="container">
+        <h1>Thank You!</h1>
+        <p>Your form has been successfully submitted.</p>
+    </div>
+
+    <script>
+      // Function to sanitize input and prevent XSS
+const sanitizeInput = (input) => {
+    return input.replace(/[&<>"']/g, function (char) {
+        const map = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        };
+        return map[char];
+    });
+};
+
+// Form validation and navigation to Thank You message
+document.getElementById("secureForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    // Check for empty fields
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+        alert("All fields are required.");
+        return;
+    }
+
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Invalid email format.");
+        return;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    // Sanitize the input
+    sanitizeInput(firstName);
+    sanitizeInput(lastName);
+    sanitizeInput(email);
+
+    // Hide the form and show the thank-you message
+    document.getElementById("formContainer").classList.remove("active");
+    document.getElementById("thankYouContainer").classList.add("active");
+});
+
+    </script>
+</body>
+</html>
